@@ -1,0 +1,2483 @@
+[
+  null,
+  {
+    "name": "pudzianki",
+    "permissions": "NONE",
+    "restriction": "1",
+    "actions": [
+      {
+        "member": "1",
+        "varName": "",
+        "dataName": "gold",
+        "defaultVal": "0",
+        "storage": "1",
+        "varName2": "myGold",
+        "name": "Store Member Data"
+      },
+      {
+        "title": "Pudzianki",
+        "author": "",
+        "color": "#ff0000",
+        "timestamp": "false",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "embded",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "embded",
+        "fieldName": "Obecnie masz ${tempVars(\"myGold\")} pudzianków.",
+        "message": "${member}",
+        "inline": "1",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "embded",
+        "channel": "0",
+        "varName2": "",
+        "name": "Send Embed Message"
+      }
+    ]
+  },
+  {
+    "name": "rob",
+    "permissions": "NONE",
+    "restriction": "1",
+    "actions": [
+      {
+        "member": "1",
+        "varName": "",
+        "dataName": "gold",
+        "defaultVal": "0",
+        "storage": "1",
+        "varName2": "myGold",
+        "name": "Store Member Data"
+      },
+      {
+        "storage": "1",
+        "varName": "result",
+        "min": "1",
+        "max": "10",
+        "name": "Generate Random Number"
+      },
+      {
+        "storage": "1",
+        "varName": "result",
+        "changeType": "1",
+        "value": "-5",
+        "name": "Control Variable"
+      },
+      {
+        "storage": "1",
+        "varName": "result",
+        "comparison": "1",
+        "value": "0",
+        "iftrue": "0",
+        "iftrueVal": "",
+        "iffalse": "3",
+        "iffalseVal": "2",
+        "name": "Check Variable"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "${member} Nie wygrałeś ani nie straciłeś żadnego złota.",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      },
+      { "name": "End Action Sequence" },
+      {
+        "storage": "1",
+        "varName": "result",
+        "comparison": "4",
+        "value": "0",
+        "iftrue": "0",
+        "iftrueVal": "",
+        "iffalse": "3",
+        "iffalseVal": "3",
+        "name": "Check Variable"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "${member} Wygrałeś ${tempVars(\"result\")} pudzianków!",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "dataName": "gold",
+        "changeType": "1",
+        "value": "tempVars(\"result\")",
+        "name": "Control Member Data"
+      },
+      { "name": "End Action Sequence" },
+      {
+        "storage": "1",
+        "varName": "result",
+        "comparison": "3",
+        "value": "0",
+        "iftrue": "0",
+        "iftrueVal": "",
+        "iffalse": "1",
+        "iffalseVal": "",
+        "name": "Check Variable"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "${member} Przegrałeś ${-tempVars(\"result\")} pudzianków...",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "dataName": "gold",
+        "changeType": "1",
+        "value": "tempVars(\"result\")",
+        "name": "Control Member Data"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "dataName": "gold",
+        "comparison": "3",
+        "value": "0",
+        "iftrue": "0",
+        "iftrueVal": "",
+        "iffalse": "1",
+        "iffalseVal": "",
+        "name": "Check Member Data"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "dataName": "gold",
+        "changeType": "0",
+        "value": "0",
+        "name": "Control Member Data"
+      }
+    ]
+  },
+  {
+    "name": "level",
+    "permissions": "NONE",
+    "restriction": "1",
+    "actions": [
+      {
+        "member": "1",
+        "varName": "",
+        "dataName": "level",
+        "defaultVal": "1",
+        "storage": "1",
+        "varName2": "myLevel",
+        "name": "Store Member Data"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "${member} Jesteś na poziomie ${tempVars(\"myLevel\")}!",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ]
+  },
+  {
+    "name": "avatar",
+    "permissions": "NONE",
+    "restriction": "1",
+    "actions": [
+      {
+        "member": "0",
+        "varName": "",
+        "storage": "1",
+        "varName2": "img",
+        "name": "Create Image from Avatar"
+      },
+      {
+        "storage": "1",
+        "varName": "img",
+        "channel": "0",
+        "varName2": "",
+        "message": "",
+        "name": "Send Image"
+      }
+    ]
+  },
+  {
+    "name": "clear",
+    "permissions": "MANAGE_CHANNELS",
+    "restriction": "1",
+    "actions": [
+      {
+        "info": "0",
+        "infoIndex": "1",
+        "storage": "1",
+        "varName": "clear",
+        "name": "Store Command Params"
+      },
+      {
+        "channel": "0",
+        "count": "${tempVars(\"clear\")}",
+        "condition": "0",
+        "custom": "",
+        "varName": "",
+        "name": "Delete Bulk Messages"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "Wyczyszczono Czat",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      },
+      {
+        "storage": "0",
+        "varName": "Wyczyszczono Czat",
+        "name": "Delete Message"
+      }
+    ]
+  },
+  {
+    "name": "help",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "uydQB",
+    "actions": [
+      {
+        "title": "Komendy",
+        "author": "",
+        "color": "#ff0000",
+        "timestamp": "false",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "embded",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "embded",
+        "fieldName": "Wszystkie komendy na stronie internetowej...",
+        "message": "https://sites.google.com/view/pudzianbot/strona-główna",
+        "inline": "1",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "embded",
+        "channel": "0",
+        "varName2": "",
+        "name": "Send Embed Message"
+      }
+    ]
+  },
+  {
+    "name": "say",
+    "permissions": "NONE",
+    "restriction": "1",
+    "actions": [
+      { "storage": "0", "varName": "", "name": "Delete Message" },
+      {
+        "info": "0",
+        "infoIndex": "1",
+        "storage": "1",
+        "varName": "embedTitle",
+        "name": "Store Command Params"
+      },
+      {
+        "info": "1",
+        "infoIndex": "2",
+        "storage": "1",
+        "varName": "embedMessage",
+        "name": "Store Command Params"
+      },
+      {
+        "title": "${tempVars(\"embedMessage\")}",
+        "author": "",
+        "color": "8b0000",
+        "timestamp": "true",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "sayEmbed",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "sayEmbed",
+        "name": "Set Embed Description"
+      },
+      {
+        "storage": "1",
+        "varName": "sayEmbed",
+        "channel": "0",
+        "varName2": "",
+        "name": "Send Embed Message"
+      }
+    ]
+  },
+  {
+    "name": "ogl",
+    "permissions": "ADMINISTRATOR",
+    "restriction": "1",
+    "actions": [
+      { "storage": "0", "varName": "", "name": "Delete Message" },
+      {
+        "info": "0",
+        "infoIndex": "1",
+        "storage": "1",
+        "varName": "embedTitle",
+        "name": "Store Command Params"
+      },
+      {
+        "info": "1",
+        "infoIndex": "2",
+        "storage": "1",
+        "varName": "embedMessage",
+        "name": "Store Command Params"
+      },
+      {
+        "title": "Ogłoszenie",
+        "author": "",
+        "color": "8b0000",
+        "timestamp": "true",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "sayEmbed",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "sayEmbed",
+        "message": "${tempVars(\"embedMessage\")}",
+        "name": "Set Embed Description"
+      },
+      {
+        "storage": "1",
+        "varName": "sayEmbed",
+        "channel": "0",
+        "varName2": "",
+        "name": "Send Embed Message"
+      }
+    ]
+  },
+  {
+    "name": "kick",
+    "permissions": "KICK_MEMBERS",
+    "restriction": "1",
+    "_id": "wHFJT",
+    "actions": [
+      {
+        "message": "0",
+        "varName": "",
+        "info": "2",
+        "storage": "1",
+        "varName2": "msg",
+        "name": "Store Message Info"
+      },
+      {
+        "storage": "1",
+        "varName": "msg",
+        "comparison": "5",
+        "value": "@",
+        "iftrue": "3",
+        "iftrueVal": "2",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Check Variable"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "```Właściwe zastosowanie +kick (@user)```",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "channel": "2",
+        "varName": "",
+        "message": "${mentionedUser} zostałeś/aś wyrzucony/a",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "reason": "",
+        "name": "Kick Member"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "${mentionedUser} został/a wyrzucony/a",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ],
+    "comType": "0"
+  },
+  {
+    "name": "ban",
+    "permissions": "BAN_MEMBERS",
+    "restriction": "1",
+    "_id": "wHFJT",
+    "actions": [
+      {
+        "message": "0",
+        "varName": "",
+        "info": "2",
+        "storage": "1",
+        "varName2": "msg",
+        "name": "Store Message Info"
+      },
+      {
+        "storage": "1",
+        "varName": "msg",
+        "comparison": "5",
+        "value": "@",
+        "iftrue": "3",
+        "iftrueVal": "2",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Check Variable"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "```Właściwe zastosowanie +ban (@user)```",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "channel": "2",
+        "varName": "",
+        "message": "${mentionedUser} zostałeś/aś zbanowany/a",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "reason": "",
+        "name": "Ban Member"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "${mentionedUser} został/a zbanowany/a",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ],
+    "comType": "0"
+  },
+  {
+    "name": "mc",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "RQILk",
+    "actions": [
+      {
+        "condition": "0",
+        "comparison": "0",
+        "value": "1",
+        "iftrue": "2",
+        "iftrueVal": "6",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Check Parameters"
+      },
+      {
+        "title": "",
+        "author": "",
+        "color": "",
+        "timestamp": "false",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "embederror",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "embederror",
+        "fieldName": "Fatal error!",
+        "message": "Podaj nam prawidłowy pseudonim Minecraft... ",
+        "inline": "1",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "embederror",
+        "channel": "0",
+        "varName2": "",
+        "name": "Send Embed Message"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "info": "0",
+        "infoIndex": "1",
+        "storage": "1",
+        "varName": "nick",
+        "name": "Store Command Params"
+      },
+      {
+        "token": "",
+        "user": "",
+        "pass": "",
+        "url": "https://api.mojang.com/users/profiles/minecraft/${tempVars(\"nick\")}",
+        "path": "id",
+        "storage": "1",
+        "varName": "id",
+        "debugMode": "1",
+        "headers": "",
+        "name": "Store Json From WebAPI"
+      },
+      {
+        "token": "",
+        "user": "",
+        "pass": "",
+        "url": "https://api.mojang.com/user/profiles/${tempVars(\"id\")}/names",
+        "path": "*.name",
+        "storage": "1",
+        "varName": "namechanges",
+        "debugMode": "1",
+        "headers": "",
+        "name": "Store Json From WebAPI"
+      },
+      {
+        "title": "${tempVars(\"nick\")} Account Information",
+        "author": "",
+        "color": "",
+        "timestamp": "false",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "https://visage.surgeplay.com/full/256/${tempVars(\"id\")}",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "embed",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "fieldName": "Name Changes History",
+        "message": "${tempVars(\"namechanges\") || \"Error fetching data...\"}",
+        "inline": "1",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "fieldName": "UUID",
+        "message": "${tempVars(\"id\")}",
+        "inline": "1",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "fieldName": "NameMC Link",
+        "message": "[Click here](https://es.namemc.com/profile/${tempVars(\"id\")}) To go to her NameMC Profile",
+        "inline": "1",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "channel": "0",
+        "varName2": "",
+        "name": "Send Embed Message"
+      }
+    ],
+    "comType": "0",
+    "_aliases": ["namemc", "Minecraft", "minecraft"],
+    "_timeRestriction": 1
+  },
+  {
+    "name": "iq",
+    "permissions": "NONE",
+    "restriction": "1",
+    "actions": [
+      {
+        "storage": "1",
+        "varName": "iq",
+        "min": "1",
+        "max": "400",
+        "name": "Generate Random Number"
+      },
+      {
+        "condition": "0",
+        "comparison": "1",
+        "value": "1",
+        "iftrue": "2",
+        "iftrueVal": "4",
+        "iffalse": "2",
+        "iffalseVal": "8",
+        "name": "Check Parameters"
+      },
+      { "name": "End Action Sequence" },
+      {
+        "title": "IQ",
+        "author": "",
+        "color": "#33baab",
+        "timestamp": "false",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "1qembed",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "1qembed",
+        "message": "**${member} posiadasz ${tempVars(\"iq\")} iq!**",
+        "name": "Set Embed Description"
+      },
+      {
+        "storage": "1",
+        "varName": "1qembed",
+        "channel": "0",
+        "varName2": "",
+        "name": "Send Embed Message"
+      },
+      { "name": "End Action Sequence" },
+      {
+        "title": "IQ",
+        "author": "",
+        "color": "#33baab",
+        "timestamp": "false",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "2qembed",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "2qembed",
+        "message": "**${mentionedUser} posiada ${tempVars(\"iq\")} iq!**",
+        "name": "Set Embed Description"
+      },
+      {
+        "storage": "1",
+        "varName": "2qembed",
+        "channel": "0",
+        "varName2": "",
+        "name": "Send Embed Message"
+      }
+    ]
+  },
+  {
+    "name": "AntiSpam",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "aQRSZ",
+    "actions": [
+      {
+        "message": "0",
+        "varName": "",
+        "info": "2",
+        "storage": "1",
+        "varName2": "msg-text",
+        "name": "Store Message Info"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "dataName": "anti-spam-protection",
+        "comparison": "1",
+        "value": "tempVars(\"msg-text\")",
+        "iftrue": "0",
+        "iftrueVal": "",
+        "iffalse": "3",
+        "iffalseVal": "3",
+        "name": "Check Member Data"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "**${member} Przestań spamować!**",
+        "storage": "0",
+        "varName2": "",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Send Message"
+      },
+      {
+        "storage": "0",
+        "varName": "",
+        "name": "Delete Message"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "dataName": "anti-spam-protection",
+        "changeType": "0",
+        "value": "tempVars(\"msg-text\")",
+        "name": "Control Member Data"
+      },
+      {
+        "time": "2",
+        "measurement": "1",
+        "name": "Wait"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "dataName": "anti-spam-protection",
+        "changeType": "0",
+        "value": "tempVars(\"msg-text\")",
+        "name": "Control Member Data"
+      }
+    ],
+    "comType": "3"
+  },
+  {
+    "name": "Kiss",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "OahBR",
+    "actions": [
+      {
+        "member": "0",
+        "varName": "",
+        "info": "2",
+        "storage": "1",
+        "varName2": "otherpeep",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "info": "2",
+        "storage": "1",
+        "varName2": "Youuuu",
+        "name": "Store Member Info"
+      },
+      {
+        "title": "${tempVars(\"Youuuu\")} Pocałował/a ${tempVars(\"otherpeep\")}",
+        "author": "",
+        "color": "",
+        "url": "",
+        "authorIcon": "",
+        "authorUrl": "",
+        "imageUrl": "https://media1.tenor.com/images/f5167c56b1cca2814f9eca99c4f4fab8/tenor.gif?itemid=6155657",
+        "thumbUrl": "",
+        "timestamp": "false",
+        "debug": "false",
+        "text": "",
+        "year": "",
+        "month": "",
+        "day": "",
+        "hour": "",
+        "minute": "",
+        "second": "",
+        "storage": "1",
+        "varName": "KissFun",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "KissFun",
+        "channel": "0",
+        "varName2": "",
+        "storage3": "0",
+        "varName3": "",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "messageContent": "",
+        "name": "Send Embed Message"
+      }
+    ]
+  },
+  {
+    "name": "pp",
+    "permissions": "NONE",
+    "restriction": "1",
+    "actions": [
+      {
+        "info": "1",
+        "infoIndex": "1",
+        "storage": "1",
+        "varName": "8ballquestion",
+        "name": "Store Command Params"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "${member}",
+        "storage": "1",
+        "varName2": "shookballmsg",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Send Message"
+      },
+      { "time": "2", "measurement": "1", "name": "Wait" },
+      { "storage": "1", "varName": "shookballmsg", "name": "Delete Message" },
+      {
+        "storage": "1",
+        "varName": "rnd_num",
+        "min": "1",
+        "max": "20",
+        "name": "Generate Random Number"
+      },
+      {
+        "behavior": "0",
+        "interpretation": "1",
+        "code": "switch (tempVars(\"rnd_num\")) {\n  case 1: msg.channel.send(\"**8=D**, \" + member + \".\"); break;\n  case 2: msg.channel.send(\"**8===D**, \" + member + \".\"); break;\n  case 3: msg.channel.send(\"**8====D**, \" + member + \".\"); break;\n  case 4: msg.channel.send(\"**8=====D**, \" + member + \".\"); break;\n  case 5: msg.channel.send(\"**8======D**, \" + member + \".\"); break;\n  case 6: msg.channel.send(\"**8=======D**, \" + member + \".\"); break;\n  case 7: msg.channel.send(\"**8========D**, \" + member + \".\"); break;\n  case 8: msg.channel.send(\"**8=========D**, \" + member + \".\"); break;\n  case 9: msg.channel.send(\"**8==========D**, \" + member + \".\"); break;\n  case 10: msg.channel.send(\"**8==========D**, \" + member + \".\"); break;\n  case 11: msg.channel.send(\"**8===========D**, \" + member + \".\"); break;\n  case 12: msg.channel.send(\"**8============D**, \" + member + \".\"); break;\n  case 13: msg.channel.send(\"**8==============D**, \" + member + \".\"); break;\n  case 14: msg.channel.send(\"**8===============D**, \" + member + \".\"); break;\n  case 15: msg.channel.send(\"**8================D**, \" + member + \".\"); break;\n  case 16: msg.channel.send(\"**8=================D**, \" + member + \".\"); break;\n  case 17: msg.channel.send(\"**8==================D**, \" + member + \".\"); break;\n  case 18: msg.channel.send(\"**8===================D**, \" + member + \".\"); break;\n  case 19: msg.channel.send(\"**8====================D**, \" + member + \".\"); break;\n  default: msg.channel.send(\"**Error 404 zbyt duży rozmiar penisa**, \" + member + \".\"); break;\n}",
+        "storage": "0",
+        "varName": "",
+        "name": "Run Script"
+      }
+    ]
+  },
+  {
+    "name": "reg",
+    "permissions": "ADMINISTRATOR",
+    "restriction": "1",
+    "actions": [
+      { "storage": "0", "varName": "", "name": "Delete Message" },
+      {
+        "info": "0",
+        "infoIndex": "1",
+        "storage": "1",
+        "varName": "embedTitle",
+        "name": "Store Command Params"
+      },
+      {
+        "info": "1",
+        "infoIndex": "2",
+        "storage": "1",
+        "varName": "embedMessage",
+        "name": "Store Command Params"
+      },
+      {
+        "title": "Regulamin",
+        "author": "",
+        "color": "8b0000",
+        "timestamp": "true",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "sayEmbed",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "sayEmbed",
+        "message": "${tempVars(\"embedMessage\")}",
+        "name": "Set Embed Description"
+      },
+      {
+        "storage": "1",
+        "varName": "sayEmbed",
+        "channel": "0",
+        "varName2": "",
+        "name": "Send Embed Message"
+      }
+    ]
+  },
+  {
+    "name": "zglos",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "jsexV",
+    "actions": [
+      {
+        "storage": "0",
+        "varName": "",
+        "name": "Delete Message"
+      },
+      {
+        "info": "2",
+        "infoIndex": "1",
+        "storage": "1",
+        "varName": "user",
+        "name": "Store Command Params"
+      },
+      {
+        "info": "1",
+        "infoIndex": "2",
+        "storage": "1",
+        "varName": "reason",
+        "name": "Store Command Params"
+      },
+      {
+        "info": "1",
+        "find": "zgłoszenia",
+        "storage": "1",
+        "varName": "reported",
+        "name": "Find Channel"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "1",
+        "storage": "1",
+        "varName2": "id",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "16",
+        "storage": "1",
+        "varName2": "AVATAR",
+        "name": "Store Member Info"
+      },
+      {
+        "title": "**ZGŁOSZENIE**",
+        "author": "",
+        "color": "#E60EF1",
+        "timestamp": "true",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "reported4",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "reported4",
+        "message": "Informacje o zgłoszeniu :arrow_down: \n\n• **Zgłaszający** => ${member}\n• **Zgłoszony** => ${tempVars(\"user\")}\n• **Powód** => ${tempVars(\"reason\")}",
+        "name": "Set Embed Description"
+      },
+      {
+        "storage": "1",
+        "varName": "reported4",
+        "channel": "5",
+        "varName2": "reported",
+        "name": "Send Embed Message"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "Twoje zgłoszenie zostało wysłane do administracji.",
+        "storage": "1",
+        "varName2": "send",
+        "name": "Send Message"
+      },
+      {
+        "time": "5",
+        "measurement": "1",
+        "name": "Wait"
+      },
+      {
+        "storage": "1",
+        "varName": "send",
+        "name": "Delete Message"
+      }
+    ]
+  },
+  {
+    "name": "userinfo",
+    "permissions": "NONE",
+    "restriction": "1",
+    "actions": [
+      {
+        "member": "0",
+        "varName": "",
+        "info": "1",
+        "storage": "1",
+        "varName2": "id",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "2",
+        "storage": "1",
+        "varName2": "username",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "4",
+        "storage": "1",
+        "varName2": "color",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "15",
+        "storage": "1",
+        "varName2": "status",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "14",
+        "storage": "1",
+        "varName2": "game",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "16",
+        "storage": "1",
+        "varName2": "avatar",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "3",
+        "storage": "1",
+        "varName2": "pseudo",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "17",
+        "storage": "1",
+        "varName2": "rola",
+        "name": "Store Member Info"
+      },
+      {
+        "title": "Informacje o ${tempVars(\"username\")}",
+        "author": "",
+        "color": "#02e9ed",
+        "timestamp": "false",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "${tempVars(\"avatar\")}",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "Embded",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "Embded",
+        "message": "\nUżytkownik:           ${tempVars(\"username\")}\nID:                   ${tempVars(\"id\")}\nKolor:                ${tempVars(\"color\")}\nStatus:               ${tempVars(\"status\")}\nGra:                  ${tempVars(\"game\") || \"Brak\"}\nRole:                 ${tempVars(\"rola\")}\nPseudonim:            ${tempVars(\"pseudo\")}",
+        "name": "Set Embed Description"
+      },
+      {
+        "storage": "1",
+        "varName": "Embded",
+        "channel": "0",
+        "varName2": "",
+        "name": "Send Embed Message"
+      }
+    ],
+    "_id": "wafyu"
+  },
+  {
+    "name": "Welcomer",
+    "permissions": "NONE",
+    "restriction": "0",
+    "_id": "dOJRg",
+    "actions": [
+      {
+        "title": "Welcome",
+        "author": "",
+        "color": "32FF00",
+        "timestamp": "true",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "lp",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "lp",
+        "fieldName": "Setup",
+        "message": "**To Set Welcome Channel , Set The Channel's Topic As `Yo !` Please Type `Yo !` As The Channel Topic To Use This Feature**\n ",
+        "inline": "1",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "lp",
+        "message": "Created By EL PEDRO#1004",
+        "footerIcon": "https://cdn.discordapp.com/avatars/696300065571995688/0ee66eded8cdc0ac0f686adb5ca24ffa.png",
+        "name": "Set Embed Footer"
+      },
+      {
+        "storage": "1",
+        "varName": "lp",
+        "channel": "0",
+        "varName2": "",
+        "storage3": "0",
+        "varName3": "",
+        "name": "Send Embed Message"
+      },
+      {
+        "title": "Leave",
+        "author": "",
+        "color": "FF0000",
+        "timestamp": "true",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "llp2",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "llp2",
+        "fieldName": "Welcome",
+        "message": "**To Set Leave Channel , Set The Channel's Topic As `Bye !` Please Type `Bye !` As The Channel Topic To Use This Feature**\n ",
+        "inline": "1",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "llp2",
+        "message": "Created By EL PEDRO#1004",
+        "footerIcon": "https://cdn.discordapp.com/avatars/696300065571995688/0ee66eded8cdc0ac0f686adb5ca24ffa.png",
+        "name": "Set Embed Footer"
+      },
+      {
+        "storage": "1",
+        "varName": "llp2",
+        "channel": "0",
+        "varName2": "",
+        "storage3": "0",
+        "varName3": "",
+        "name": "Send Embed Message"
+      }
+    ]
+  },
+  {
+    "name": "ip",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "vNXqY",
+    "actions": [
+      {
+        "condition": "1",
+        "comparison": "0",
+        "value": "1",
+        "iftrue": "0",
+        "iftrueVal": "",
+        "iffalse": "2",
+        "iffalseVal": "35",
+        "name": "Check Parameters"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "Obliczanie IP.",
+        "storage": "1",
+        "varName2": "msg-ip",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Send Message"
+      },
+      {
+        "changeType": "1",
+        "value": "1",
+        "storage": "1",
+        "varName": "ip-razy",
+        "name": "Control Variable"
+      },
+      {
+        "time": "1",
+        "measurement": "1",
+        "name": "Wait"
+      },
+      {
+        "storage": "1",
+        "varName": "msg-ip",
+        "message": "Obliczanie IP ..",
+        "storage2": "1",
+        "varName2": "",
+        "name": "Edit Message"
+      },
+      {
+        "time": "1",
+        "measurement": "1",
+        "name": "Wait"
+      },
+      {
+        "storage": "1",
+        "varName": "msg-ip",
+        "message": "Obliczanie IP ...",
+        "storage2": "1",
+        "varName2": "",
+        "name": "Edit Message"
+      },
+      {
+        "time": "1",
+        "measurement": "1",
+        "name": "Wait"
+      },
+      {
+        "storage": "1",
+        "varName": "msg-ip",
+        "message": "Obliczanie IP .",
+        "storage2": "1",
+        "varName2": "",
+        "name": "Edit Message"
+      },
+      {
+        "storage": "1",
+        "varName": "ip-razy",
+        "comparison": "1",
+        "value": "3",
+        "iftrue": "0",
+        "iftrueVal": "",
+        "iffalse": "2",
+        "iffalseVal": "3",
+        "name": "Check Variable"
+      },
+      {
+        "storage": "1",
+        "varName": "ip-dyn",
+        "min": "1",
+        "max": "2",
+        "name": "Generate Random Number"
+      },
+      {
+        "storage": "1",
+        "varName": "ip-dyn",
+        "comparison": "1",
+        "value": "1",
+        "iftrue": "2",
+        "iftrueVal": "15",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Check Variable"
+      },
+      {
+        "storage": "1",
+        "varName": "ip-dyn",
+        "comparison": "1",
+        "value": "2",
+        "iftrue": "2",
+        "iftrueVal": "31",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Check Variable"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "storage": "1",
+        "varName": "msg-ip",
+        "message": "${mentionedUser} ma IP dynamiczne, więc może się zmieniać.",
+        "storage2": "1",
+        "varName2": "",
+        "name": "Edit Message"
+      },
+      {
+        "time": "3",
+        "measurement": "1",
+        "name": "Wait"
+      },
+      {
+        "storage": "1",
+        "varName": "ip-1",
+        "min": "1",
+        "max": "255",
+        "name": "Generate Random Number"
+      },
+      {
+        "storage": "1",
+        "varName": "ip-2",
+        "min": "1",
+        "max": "255",
+        "name": "Generate Random Number"
+      },
+      {
+        "storage": "1",
+        "varName": "ip-3",
+        "min": "1",
+        "max": "255",
+        "name": "Generate Random Number"
+      },
+      {
+        "storage": "1",
+        "varName": "ip-4",
+        "min": "1",
+        "max": "255",
+        "name": "Generate Random Number"
+      },
+      {
+        "storage": "1",
+        "varName": "msg-ip",
+        "message": "IPv4 użytkownika ${mentionedUser} to XXX.XXX.XXX.XXX",
+        "storage2": "1",
+        "varName2": "",
+        "name": "Edit Message"
+      },
+      {
+        "time": "2",
+        "measurement": "1",
+        "name": "Wait"
+      },
+      {
+        "storage": "1",
+        "varName": "msg-ip",
+        "message": "IPv4 użytkownika ${mentionedUser} to ${tempVars(\"ip-1\")}.XXX.XXX.XXX",
+        "storage2": "1",
+        "varName2": "",
+        "name": "Edit Message"
+      },
+      {
+        "time": "1",
+        "measurement": "1",
+        "name": "Wait"
+      },
+      {
+        "storage": "1",
+        "varName": "msg-ip",
+        "message": "IPv4 użytkownika ${mentionedUser} to ${tempVars(\"ip-1\")}.${tempVars(\"ip-2\")}.XXX.XXX",
+        "storage2": "1",
+        "varName2": "",
+        "name": "Edit Message"
+      },
+      {
+        "time": "2",
+        "measurement": "1",
+        "name": "Wait"
+      },
+      {
+        "storage": "1",
+        "varName": "msg-ip",
+        "message": "IPv4 użytkownika ${mentionedUser} to ${tempVars(\"ip-1\")}.${tempVars(\"ip-2\")}.${tempVars(\"ip-3\")}.XXX",
+        "storage2": "1",
+        "varName2": "",
+        "name": "Edit Message"
+      },
+      {
+        "time": "1",
+        "measurement": "1",
+        "name": "Wait"
+      },
+      {
+        "storage": "1",
+        "varName": "msg-ip",
+        "message": "IPv4 użytkownika ${mentionedUser} to ${tempVars(\"ip-1\")}.${tempVars(\"ip-2\")}.${tempVars(\"ip-3\")}.${tempVars(\"ip-4\")}",
+        "storage2": "1",
+        "varName2": "",
+        "name": "Edit Message"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "storage": "1",
+        "varName": "msg-ip",
+        "message": "${mentionedUser} ma normalne IP więc nie zmieni się, ale używa firewalla i IP może być podstawione.",
+        "storage2": "1",
+        "varName2": "",
+        "name": "Edit Message"
+      },
+      {
+        "time": "3",
+        "measurement": "1",
+        "name": "Wait"
+      },
+      {
+        "call": "16",
+        "name": "Jump to Action"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": ":x:! Musisz podać kogo IP mam obliczyć!",
+        "storage": "0",
+        "varName2": "",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Send Message"
+      }
+    ]
+  },
+  {
+    "name": "verify",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "xCCiD",
+    "actions": [
+      {
+        "info": "1",
+        "find": "✅ Zweryfikowany",
+        "storage": "1",
+        "varName": "Role",
+        "name": "Find Role"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "role": "3",
+        "varName2": "Role",
+        "iftrue": "2",
+        "iftrueVal": "8",
+        "iffalse": "2",
+        "iffalseVal": "3",
+        "name": "Check If Member has Role"
+      },
+      {
+        "member": "1",
+        "varName2": "",
+        "role": "3",
+        "varName": "Role",
+        "name": "Add Member Role"
+      }
+    ]
+  },
+  {
+    "name": "Warn",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "lSkWo",
+    "actions": [
+      {
+        "member": "1",
+        "varName": "",
+        "permission": "ADMINISTRATOR",
+        "iftrue": "3",
+        "iftrueVal": "4",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Check Member Permissions"
+      },
+      {
+        "title": "",
+        "author": "",
+        "color": "00000",
+        "timestamp": "false",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "embed",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "message": "****Error:**** Nie masz pozwolenia",
+        "name": "Set Embed Description"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "channel": "0",
+        "varName2": "",
+        "storage3": "0",
+        "varName3": "",
+        "name": "Send Embed Message"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "condition": "1",
+        "comparison": "0",
+        "value": "1",
+        "iftrue": "3",
+        "iftrueVal": "4",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Check Parameters"
+      },
+      {
+        "title": "",
+        "author": "",
+        "color": "00000",
+        "timestamp": "false",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "embed1",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "embed1",
+        "message": "****Error:**** +warn @user",
+        "name": "Set Embed Description"
+      },
+      {
+        "storage": "1",
+        "varName": "embed1",
+        "channel": "0",
+        "varName2": "",
+        "storage3": "0",
+        "varName3": "",
+        "name": "Send Embed Message"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "server": "0",
+        "varName": "",
+        "info": "1",
+        "storage": "1",
+        "varName2": "id",
+        "name": "Store Server Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "dataName": "${tempVars(\"id\")}.warnings",
+        "defaultVal": "0",
+        "storage": "1",
+        "varName2": "warnings",
+        "name": "Store Member Data"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "16",
+        "storage": "1",
+        "varName2": "img",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "3",
+        "storage": "1",
+        "varName2": "name",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "21",
+        "storage": "1",
+        "varName2": "tag",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "info": "21",
+        "storage": "1",
+        "varName2": "tagauthor",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "info": "16",
+        "storage": "1",
+        "varName2": "avatarowner",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "21",
+        "storage": "1",
+        "varName2": "tag",
+        "name": "Store Member Info"
+      },
+      {
+        "server": "0",
+        "varName": "",
+        "info": "2",
+        "storage": "1",
+        "varName2": "server",
+        "name": "Store Server Info"
+      },
+      {
+        "info": "2",
+        "infoIndex": "1",
+        "storage": "2",
+        "varName": "user",
+        "name": "Store Command Params"
+      },
+      {
+        "info": "1",
+        "infoIndex": "2",
+        "storage": "2",
+        "varName": "reason",
+        "name": "Store Command Params"
+      },
+      {
+        "title": "",
+        "author": "${tempVars(\"tag\")} został ostrzeżony ",
+        "color": "FF0000",
+        "timestamp": "false",
+        "url": "",
+        "authorIcon": "${tempVars(\"img\")}",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "embed-info",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "",
+        "fieldName": "• reason",
+        "message": "${serverVars(\"reason\")}",
+        "inline": "1",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "embed-info",
+        "message": "****Powód****: ${serverVars(\"reason\")} ",
+        "name": "Set Embed Description"
+      },
+      {
+        "storage": "1",
+        "varName": "embed-info",
+        "channel": "0",
+        "varName2": "",
+        "storage3": "0",
+        "varName3": "",
+        "name": "Send Embed Message"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "dataName": ".warnings",
+        "changeType": "1",
+        "value": "1",
+        "name": "Control Member Data"
+      }
+    ]
+  },
+  {
+    "name": "Warns",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "pdWjn",
+    "actions": [
+      {
+        "member": "1",
+        "varName": "",
+        "permission": "KICK_MEMBERS",
+        "iftrue": "2",
+        "iftrueVal": "10",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Check Member Permissions"
+      },
+      {
+        "server": "0",
+        "varName": "",
+        "info": "1",
+        "storage": "1",
+        "varName2": "id",
+        "name": "Store Server Info"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "info": "16",
+        "storage": "1",
+        "varName2": "imigur1",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "info": "21",
+        "storage": "1",
+        "varName2": "name",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "dataName": ".warnings",
+        "defaultVal": "0",
+        "storage": "1",
+        "varName2": "warnings",
+        "name": "Store Member Data"
+      },
+      {
+        "title": "",
+        "author": "${tempVars(\"name\")}",
+        "color": "FF0000",
+        "timestamp": "false",
+        "url": "",
+        "authorIcon": "${tempVars(\"imigur1\")}",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "send",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "send",
+        "fieldName": "• Liczba ostrzeżeń",
+        "message": "${tempVars(\"warnings\")}",
+        "inline": "0",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "send",
+        "channel": "0",
+        "varName2": "",
+        "storage3": "0",
+        "varName3": "",
+        "name": "Send Embed Message"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "condition": "1",
+        "comparison": "0",
+        "value": "1",
+        "iftrue": "0",
+        "iftrueVal": "",
+        "iffalse": "2",
+        "iffalseVal": "2",
+        "name": "Check Parameters"
+      },
+      {
+        "server": "0",
+        "varName": "",
+        "info": "1",
+        "storage": "1",
+        "varName2": "id",
+        "name": "Store Server Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "16",
+        "storage": "1",
+        "varName2": "imgur1",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "21",
+        "storage": "1",
+        "varName2": "tag",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "0",
+        "varName": "",
+        "dataName": "${tempVars(\"id\")}.warnings",
+        "defaultVal": "1",
+        "storage": "1",
+        "varName2": "warnings",
+        "name": "Store Member Data"
+      },
+      {
+        "title": "",
+        "author": "",
+        "color": "",
+        "timestamp": "false",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "send",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "send",
+        "fieldName": "• Liczba ostrzeżeń",
+        "message": "${tempVars(\"warnings\")}",
+        "inline": "1",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "send",
+        "channel": "0",
+        "varName2": "",
+        "storage3": "0",
+        "varName3": "",
+        "name": "Send Embed Message"
+      }
+    ]
+  },
+  {
+    "name": "ClearWarns",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "rtwoA",
+    "actions": [
+      {
+        "member": "0",
+        "varName": "",
+        "dataName": ".warnings",
+        "changeType": "0",
+        "value": "0",
+        "name": "Control Member Data"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "Pomyślnie usuń ostrzeżenia! <a:verified:753266753987149895>",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      },
+      {
+        "storage": "0",
+        "varName": "",
+        "reason": "",
+        "name": "Delete Message"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "info": "0",
+        "search": "Pomyślnie usuń ostrzeżenia! <a:white_check_mark:753266753987149895>",
+        "storage": "1",
+        "varName2": "delete",
+        "name": "Find Message"
+      },
+      {
+        "time": "2",
+        "measurement": "1",
+        "name": "Wait"
+      },
+      {
+        "storage": "1",
+        "varName": "delete",
+        "reason": "",
+        "name": "Delete Message"
+      }
+    ]
+  },
+  {
+    "name": "gay",
+    "permissions": "NONE",
+    "restriction": "1",
+    "actions": [
+      {
+        "info": "0",
+        "infoIndex": "1",
+        "storage": "1",
+        "varName": "params",
+        "name": "Store Command Params"
+      },
+      {
+        "condition": "1",
+        "comparison": "0",
+        "value": "1",
+        "iftrue": "2",
+        "iftrueVal": "6",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Check Parameters"
+      },
+      {
+        "title": "Wspomnij o użytkowniku, aby skalować swoją homoseksualność.",
+        "author": "",
+        "color": "#4A90E2",
+        "timestamp": "true",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "err",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "err",
+        "channel": "0",
+        "varName2": "",
+        "name": "Send Embed Message"
+      },
+      { "name": "End Action Sequence" },
+      {
+        "member": "0",
+        "varName": "",
+        "info": "2",
+        "storage": "1",
+        "varName2": "username",
+        "name": "Store Member Info"
+      },
+      {
+        "storage": "1",
+        "varName": "number",
+        "min": "1",
+        "max": "100",
+        "name": "Generate Random Number"
+      },
+      {
+        "title": "${tempVars(\"username\")} skala homoseksualizmu",
+        "author": "",
+        "color": "#FF00F7",
+        "timestamp": "true",
+        "url": "",
+        "authorIcon": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "storage": "1",
+        "varName": "embed",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "message": "${mentionedUser} skala homoseksualizmu to ${tempVars(\"number\")}%",
+        "name": "Set Embed Description"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "channel": "0",
+        "varName2": "",
+        "name": "Send Embed Message"
+      }
+    ],
+    "_id": "SBtbh"
+  },
+  {
+  "name": "ship",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "poLKa",
+  "actions": [
+    {
+      "title": "",
+      "author": "",
+      "color": "#ff99ff",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "timestamp": "false",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "username",
+      "name": "Store Command Params"
+    },
+    {
+      "storage": "1",
+      "varName": "number",
+      "min": "0",
+      "max": "100",
+      "name": "Generate Random Number"
+    },
+    {
+      "storage": "1",
+      "varName": "number",
+      "comparison": "3",
+      "value": "11",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "**${tempVars(\"number\")}%** █:black_medium_small_square::black_medium_small_square::black_medium_small_square::black_medium_small_square::black_medium_small_square: Koszmarnie 😭",
+      "name": "Set Embed Description"
+    },
+    {
+      "call": "40",
+      "name": "Jump to Action"
+    },
+    {
+      "storage": "1",
+      "varName": "number",
+      "comparison": "3",
+      "value": "21",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "**${tempVars(\"number\")}%** █:black_medium_small_square::black_medium_small_square::black_medium_small_square::black_medium_small_square::black_medium_small_square: Slabo 😢",
+      "name": "Set Embed Description"
+    },
+    {
+      "call": "40",
+      "name": "Jump to Action"
+    },
+    {
+      "storage": "1",
+      "varName": "number",
+      "comparison": "3",
+      "value": "31",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "**${tempVars(\"number\")}%** ██:black_medium_small_square::black_medium_small_square::black_medium_small_square::black_medium_small_square: Tak sobie 😦",
+      "name": "Set Embed Description"
+    },
+    {
+      "call": "40",
+      "name": "Jump to Action"
+    },
+    {
+      "storage": "1",
+      "varName": "number",
+      "comparison": "3",
+      "value": "41",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "**${tempVars(\"number\")}%** ███:black_medium_small_square::black_medium_small_square::black_medium_small_square::black_medium_small_square: Przecietnie 😕",
+      "name": "Set Embed Description"
+    },
+    {
+      "call": "40",
+      "name": "Jump to Action"
+    },
+    {
+      "storage": "1",
+      "varName": "number",
+      "comparison": "3",
+      "value": "51",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "**${tempVars(\"number\")}%** ████:black_medium_small_square::black_medium_small_square::black_medium_small_square: Srednio 😐",
+      "name": "Set Embed Description"
+    },
+    {
+      "call": "40",
+      "name": "Jump to Action"
+    },
+    {
+      "storage": "1",
+      "varName": "number",
+      "comparison": "3",
+      "value": "61",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "**${tempVars(\"number\")}%** █████:black_medium_small_square::black_medium_small_square::black_medium_small_square: Moze byc lepiej 😶",
+      "name": "Set Embed Description"
+    },
+    {
+      "call": "40",
+      "name": "Jump to Action"
+    },
+    {
+      "storage": "1",
+      "varName": "number",
+      "comparison": "3",
+      "value": "71",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "**${tempVars(\"number\")}%** ██████:black_medium_small_square::black_medium_small_square: Nie jest zle 🙂",
+      "name": "Set Embed Description"
+    },
+    {
+      "call": "40",
+      "name": "Jump to Action"
+    },
+    {
+      "storage": "1",
+      "varName": "number",
+      "comparison": "3",
+      "value": "81",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "**${tempVars(\"number\")}%** ███████:black_medium_small_square::black_medium_small_square: Dobrze 😄",
+      "name": "Set Embed Description"
+    },
+    {
+      "call": "40",
+      "name": "Jump to Action"
+    },
+    {
+      "storage": "1",
+      "varName": "number",
+      "comparison": "3",
+      "value": "91",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "**${tempVars(\"number\")}%** ████████:black_medium_small_square: Bardzo dobrze 😃",
+      "name": "Set Embed Description"
+    },
+    {
+      "call": "40",
+      "name": "Jump to Action"
+    },
+    {
+      "storage": "1",
+      "varName": "number",
+      "comparison": "3",
+      "value": "100",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "**${tempVars(\"number\")}%** ██████████ Niesamowicie 😍",
+      "name": "Set Embed Description"
+    },
+    {
+      "call": "40",
+      "name": "Jump to Action"
+    },
+    {
+      "storage": "1",
+      "varName": "number",
+      "comparison": "1",
+      "value": "100",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "**${tempVars(\"number\")}%** ██████████ PRAWDZIWA MILOSC ❣",
+      "name": "Set Embed Description"
+    },
+    {
+      "call": "40",
+      "name": "Jump to Action"
+    },
+    {
+      "comment": "abc",
+      "color": "#000000",
+      "name": "Comment"
+    },
+    {
+      "comment": "abc",
+      "color": "#000000",
+      "name": "Comment"
+    },
+    {
+      "comment": "abc",
+      "color": "#000000",
+      "name": "Comment"
+    },
+    {
+      "condition": "0",
+      "comparison": "0",
+      "value": "1",
+      "iftrue": "2",
+      "iftrueVal": "55",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "condition": "1",
+      "comparison": "0",
+      "value": "1",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "4",
+      "name": "Check Parameters"
+    },
+    {
+      "condition": "0",
+      "comparison": "0",
+      "value": "2",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "3",
+      "name": "Check Parameters"
+    },
+    {
+      "info": "0",
+      "infoIndex": "2",
+      "storage": "1",
+      "varName": "item",
+      "name": "Store Command Params"
+    },
+    {
+      "member": "0",
+      "varName": "",
+      "info": "3",
+      "storage": "1",
+      "varName2": "username",
+      "name": "Store Member Info"
+    },
+    {
+      "call": "52",
+      "name": "Jump to Action"
+    },
+    {
+      "condition": "1",
+      "comparison": "0",
+      "value": "2",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "2",
+      "iffalseVal": "62",
+      "name": "Check Parameters"
+    },
+    {
+      "info": "2",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "member1",
+      "name": "Store Command Params"
+    },
+    {
+      "info": "2",
+      "infoIndex": "2",
+      "storage": "1",
+      "varName": "member2",
+      "name": "Store Command Params"
+    },
+    {
+      "member": "2",
+      "varName": "member1",
+      "info": "3",
+      "storage": "1",
+      "varName2": "username1",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "2",
+      "varName": "member2",
+      "info": "3",
+      "storage": "1",
+      "varName2": "username2",
+      "name": "Store Member Info"
+    },
+    {
+      "call": "59",
+      "name": "Jump to Action"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":heartpulse: **Sprawdzanie** :heartpulse:\n:small_red_triangle_down: `${tempVars(\"username\")}`\n:small_red_triangle: `${tempVars(\"item\")}`",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "0",
+      "varName2": "",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "member": "0",
+      "varName": "",
+      "info": "2",
+      "storage": "1",
+      "varName2": "username",
+      "name": "Store Member Info"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":heartpulse: **SPRAWDZANIE** :heartpulse:\n:small_red_triangle_down: _`${member.displayName}`_\n:small_red_triangle: _`${tempVars(\"username\")}`_",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "0",
+      "varName2": "",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":heartpulse: **SPRAWDZANIE** :heartpulse:\n:small_red_triangle_down: _`${tempVars(\"username2\")}`_\n:small_red_triangle: _`${tempVars(\"username1\")}`_",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "0",
+      "varName2": "",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "info": "0",
+      "infoIndex": "2",
+      "storage": "1",
+      "varName": "item2",
+      "name": "Store Command Params"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":heartpulse: **SPRAWDZANIE** :heartpulse:\n:small_red_triangle_down: _`${tempVars(\"username\")}`_\n:small_red_triangle: _`${tempVars(\"item2\")}`_",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "0",
+      "varName2": "",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    }
+  ],
+  "comType": "0"
+}
+]
