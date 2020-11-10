@@ -1,167 +1,195 @@
 module.exports = {
+  name: 'Set Bot Activity',
+  section: 'Bot Client Control',
 
-//---------------------------------------------------------------------
-// Action Name
-//
-// This is the name of the action displayed in the editor.
-//---------------------------------------------------------------------
+  subtitle (data) {
+    const activities = [
+      'Playing',
+      'Listening to',
+      'Watching',
+      'Streaming Twitch'
+    ]
 
-name: "Set Bot Activity",
+    const stats = ['Online', 'Idle', 'Invisible', 'Do Not Disturb']
 
-//---------------------------------------------------------------------
-// Action Section
-//
-// This is the section the action will fall into.
-//---------------------------------------------------------------------
+    return `${stats[data.stat]}, ${activities[data.activity]} ${data.nameText}`
+  },
 
-section: "Bot Client Control",
+  fields: ['activity', 'nameText', 'url', 'stat'],
 
-//---------------------------------------------------------------------
-// Action Subtitle
-//
-// This function generates the subtitle displayed next to the name.
-//---------------------------------------------------------------------
-
-subtitle: function(data) {
-
-	const activities = ["Playing", "Listening", "Watching", "Streaming Twitch"];
-	return `${activities[data.activity]} ${data.nameText}`;
-},
-
-//---------------------------------------------------------------------
-// Action Fields
-//
-// These are the fields for the action. These fields are customized
-// by creating elements with corresponding IDs in the HTML. These
-// are also the names of the fields stored in the action's JSON data.
-//---------------------------------------------------------------------
-
-fields: ["activity", "nameText", "url"],
-
-//---------------------------------------------------------------------
-// Command HTML
-//
-// This function returns a string containing the HTML used for
-// editting actions.
-//
-// The "isEvent" parameter will be true if this action is being used
-// for an event. Due to their nature, events lack certain information,
-// so edit the HTML to reflect this.
-//
-// The "data" parameter stores constants for select elements to use.
-// Each is an array: index 0 for commands, index 1 for events.
-// The names are: sendTargets, members, roles, channels,
-//                messages, servers, variables
-//---------------------------------------------------------------------
-
-html: function(isEvent, data) {
-	return `
-<div id ="wrexdiv" style="width: 550px; height: 350px; overflow-y: scroll;">
-  <div>
-		<p>
-			<u>Mod Info:</u><br>
-			Created by Lasse!<br>
-			Edited by General Wrex<br><br>
-			Streaming Activity only works with Twitch.<br>
-			This action requires the latest discord.js version!<br>
-			Check out this video: https://youtu.be/mrrtj5nlV58<br>
-		</p>
-	</div>
-
-  <div style="float: left; width: 70%;">
-  Activity:<br>
-  <select id="activity" class="round">
-     <option value="0">Playing</option>
-     <option value="1">Listening</option>
-     <option value="2">Watching</option>
-     <option value="3">Streaming Twitch</option>
-   </select><br>
-     Name: (Shown to the right of the activity)<br>
-    <input id="nameText" class="round" type="text"><br>
-     Twitch Stream URL: (Streaming Twitch Only)<br>
-    <input id="url" class="round" type="text">
+  html () {
+    return `
+<div id="mod-container">
+  <div id="main-body">
+    <div style="display: flex;">
+      <div style="width: 50%; padding-right: 10px">
+        Activity:<br>
+        <select id="activity" class="round" style="width: 100%;">
+          <option value="0">Playing</option>
+          <option value="1">Listening to</option>
+          <option value="2">Watching</option>
+          <option value="3">Streaming Twitch</option>
+        </select>
+      </div>
+      <div style="width: 50%; padding-left: 10px">
+        Status:<br>
+        <select id="stat" class="round" style="width: 100%;">
+          <option value="0">Online</option>
+          <option value="1">Idle</option>
+          <option value="2">Invisible</option>
+          <option value="3">Do Not Disturb</option>
+        </select>
+      </div>
+    </div><br>
+    Activity Name:<br>
+    <input id="nameText" class="round" type="text" style="width: 100%;"><br>
+    <div id="urlArea" class="hidden">
+      Twitch Stream URL:<br>
+      <input id="url" class="round" type="text" autofocus="autofocus" placeholder='Only works with http://twitch.tv/ URLs' style="width: 100%;">
+    </div>
   </div>
-</div>`
-},
+</div>
+<style>
+  #mod-container {
+    width: 570px;
+    height: 359px;
+    overflow-y: scroll;
+  }
 
-//---------------------------------------------------------------------
-// Action Editor Init Code
-//
-// When the HTML is first applied to the action editor, this code
-// is also run. This helps add modifications or setup reactionary
-// functions for the DOM elements.
-//---------------------------------------------------------------------
+  #main-body {
+    padding: 15px;
+  }
 
-init: function() {
-},
+  .action-input {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 
-//---------------------------------------------------------------------
-// Action Bot Function
-//
-// This is the function for the action within the Bot's Action class.
-// Keep in mind event calls won't have access to the "msg" parameter,
-// so be sure to provide checks for variable existance.
-//---------------------------------------------------------------------
+  body {
+    margin: 0;
+  }
 
-action: function(cache) {
-	const botClient = this.getDBM().Bot.bot.user;
-	const data = cache.actions[cache.index];
+  .hidden {
+    display: none;
+  }
+</style>`
+  },
 
-	const nameText = this.evalMessage(data.nameText, cache)
-	const url = this.evalMessage(data.url, cache)
+  init () {
+    const { document } = this
 
+    const selector = document.getElementById('activity')
+    const targetfield = document.getElementById('urlArea')
 
-	const activity = parseInt(data.activity);
+    if (selector[selector.selectedIndex].value === '3') {
+      targetfield.classList.remove('hidden')
+    } else {
+      targetfield.classList.add('hidden')
+    }
 
-	let target;
-	if(activity >= 0) {
-		switch(activity) {
-			case 0:
-				target = 'PLAYING';
-				break;
-			case 1:
-				target = 'LISTENING';
-				break;
-			case 2:
-				target = 'WATCHING';
-				break;
-			case 3:
-				target = 'STREAMING';
-				break;
-		}
-	}
+    function showUrl () {
+      if (selector[selector.selectedIndex].value === '3') {
+        targetfield.classList.remove('hidden')
+      } else {
+        targetfield.classList.add('hidden')
+      }
+    }
 
-	if(botClient) {
+    selector.onclick = () => showUrl()
+  },
 
-		let obj;
+  action (cache) {
+    const botClient = this.getDBM().Bot.bot.user
+    const data = cache.actions[cache.index]
 
-		if(nameText && activity){
-			obj = { game:{ name: nameText, type: target }}
+    const nameText = this.evalMessage(data.nameText, cache)
+    const url = this.evalMessage(data.url, cache)
 
-			if(url){
-				obj = { game:{ name: nameText, type: target, url: url } }
-			}
-		}
+    const activity = parseInt(data.activity)
+    const stat = parseInt(data.stat)
 
-		botClient.setPresence(obj).then(function() {
-			this.callNextAction(cache);
-			}.bind(this))
-		.catch(err=>console.log(err));
-	} else {
-		this.callNextAction(cache);
-	}
-},
+    let obj
 
-//---------------------------------------------------------------------
-// Action Bot Mod
-//
-// Upon initialization of the bot, this code is run. Using the bot's
-// DBM namespace, one can add/modify existing functions if necessary.
-// In order to reduce conflictions between mods, be sure to alias
-// functions you wish to overwrite.
-//---------------------------------------------------------------------
+    let target
+    if (activity >= 0) {
+      switch (activity) {
+        case 0:
+          target = 'PLAYING'
+          break
+        case 1:
+          target = 'LISTENING'
+          break
+        case 2:
+          target = 'WATCHING'
+          break
+        case 3:
+          target = 'STREAMING'
+          break
+      }
+    }
 
-mod: function(DBM) {
+    let statustarget
+    if (stat >= 0) {
+      switch (stat) {
+        case 0:
+          statustarget = 'online'
+          break
+        case 1:
+          statustarget = 'idle'
+          break
+        case 2:
+          statustarget = 'invisible'
+          break
+        case 3:
+          statustarget = 'dnd'
+          break
+      }
+    }
+
+    if (botClient) {
+      if (nameText) {
+        if (target === 'STREAMING') {
+          obj = {
+            activity: {
+              name: nameText,
+              type: target,
+              url
+            },
+            status: statustarget
+          }
+          botClient
+            .setPresence(obj)
+            .then(
+              () => {
+                this.callNextAction(cache)
+              }
+            )
+            .catch(console.error)
+        } else {
+          obj = {
+            activity: {
+              name: nameText,
+              type: target
+            },
+            status: statustarget
+          }
+          botClient
+            .setPresence(obj)
+            .then(
+              () => {
+                this.callNextAction(cache)
+              }
+            )
+            .catch(console.error)
+        }
+      } else {
+        console.log('ERROR: Please input activity in "Set Bot Activity MOD"')
+        this.callNextAction(cache)
+      }
+    } else {
+      this.callNextAction(cache)
+    }
+  },
+
+  mod () {}
 }
-
-}; // End of module
